@@ -3,9 +3,12 @@ function Show-BTLogo {
         [string]$Version
     )
 
-    $BGColor = $host.UI.RawUI.BackgroundColor
+    $BGColor = $Host.UI.RawUI.BackgroundColor
+    if ($BGColor -eq -1 -or $null -eq $BGColor) {
+        $BGColor = [System.ConsoleColor]::Black
+    }
 
-    Write-Host ' ' -BackgroundColor $BGColor
+    Write-Host ' '
     Write-Host '        :::::::::  :::       :::    ::: :::::::::: ::::::::::: :::    ::: :::    ::: :::::::::: :::::::::   ::::::::  ' -ForegroundColor DarkMagenta -BackgroundColor Black -NoNewline
     Write-Host ' ' -BackgroundColor $BGColor
     Write-Host '       :+:    :+: :+:       :+:    :+: :+:            :+:     :+:    :+: :+:    :+: :+:        :+:    :+: :+:    :+:  ' -ForegroundColor Magenta -BackgroundColor Black -NoNewline
@@ -20,6 +23,6 @@ function Show-BTLogo {
     Write-Host ' ' -BackgroundColor $BGColor
     Write-Host '  #########  ######### #########  ##########     ###      ########  ###    ### ########## #########   ########        ' -ForegroundColor Blue -BackgroundColor Black -NoNewline
     Write-Host ' ' -BackgroundColor $BGColor
-    Write-Host ' ' -BackgroundColor $BGColor
+    Write-Host ' '
     Write-Host "                                                                                                      v$Version"
 }
